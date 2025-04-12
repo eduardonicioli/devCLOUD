@@ -1,1 +1,8 @@
+tecnologias usadas:
 
+- Amazon S3 - Armazenamento de objetos (imagens, vídeos, arquivos)
+- Amazon DynamoDB - Banco NoSQL para armazenamento de dados estruturados
+- Amazon ECS (Container Service) - Execução e orquestração de aplicações em contêineres
+Docker
+- Ferramentas AWS Dev (Cloud9, SDK, CloudWatch, X-Ray) - Desenvolvimento e monitoramento
+de aplicações
