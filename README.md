@@ -32,6 +32,21 @@ Fluxo do Projeto 🔄
 - A API interage com o S3 🗃️ e o DynamoDB 📊 para armazenar e recuperar dados.
 - Um servidor EC2 🖥️ simula o cliente que consome a API.
 
+Endpoints da API 🌐
+-
+A API fornece os seguintes endpoints:
+
+- POST /upload 📤: Faz upload de arquivos para o S3.
+- GET /files/:id 📂: Recupera um arquivo específico do S3.
+- POST /comments 💬: Salva comentários no DynamoDB.
+- GET /comments 📋: Recupera todos os comentários do DynamoDB.
+
+Boas Práticas Aplicadas ✨
+-
+- Segurança : Uso do IAM para controlar permissões 🔒.
+- Escalabilidade : Serviços gerenciados como ECS e CodeBuild 🚀.
+- Manutenibilidade : Pipeline CI/CD automatizado 🤖.
+
 👥 Integrantes do Grupo
 -
 Este projeto foi desenvolvido em colaboração pelos seguintes integrantes:
