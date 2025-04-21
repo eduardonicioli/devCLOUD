@@ -1,82 +1,252 @@
-/* Estilização geral */
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1117%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='rgba(3%2c 79%2c 141%2c 1)'%3e%3c/rect%3e%3cpath d='M1952 1080L0 1080 L0 761.58Q52.41 653.99%2c 160 706.4Q227.99 678.39%2c 256 746.38Q343.39 737.77%2c 352 825.17Q408.02 721.19%2c 512 777.21Q528 697.22%2c 608 713.22Q704.2 649.42%2c 768 745.62Q852.05 733.67%2c 864 817.73Q917.64 711.37%2c 1024 765.01Q1094.97 675.99%2c 1184 746.96Q1249.09 716.05%2c 1280 781.13Q1368.57 709.7%2c 1440 798.28Q1486.67 684.95%2c 1600 731.62Q1720.2 691.82%2c 1760 812.02Q1800.4 756.42%2c 1856 796.83Q1893.59 738.42%2c 1952 776.02z' fill='rgba(53%2c 108%2c 177%2c 1)'%3e%3c/path%3e%3cpath d='M2016 1080L0 1080 L0 898.69Q84.29 822.98%2c 160 907.27Q181.81 833.08%2c 256 854.89Q275.43 778.32%2c 352 797.74Q446.08 731.82%2c 512 825.9Q604.98 822.88%2c 608 915.85Q669.54 817.39%2c 768 878.93Q835.71 786.63%2c 928 854.34Q1007.29 837.63%2c 1024 916.93Q1086.21 819.14%2c 1184 881.36Q1269.7 807.07%2c 1344 892.77Q1375.86 828.63%2c 1440 860.48Q1550.39 810.87%2c 1600 921.26Q1641.79 803.05%2c 1760 844.84Q1817.29 806.13%2c 1856 863.41Q1920.22 767.63%2c 2016 831.85z' fill='rgba(5%2c 69%2c 121%2c 1)'%3e%3c/path%3e%3cpath d='M2016 1080L0 1080 L0 1023.2Q29.42 892.62%2c 160 922.04Q262.72 864.76%2c 320 967.48Q394.58 946.06%2c 416 1020.63Q430.52 939.15%2c 512 953.68Q565.21 910.89%2c 608 964.1Q673.49 869.59%2c 768 935.07Q888.33 895.4%2c 928 1015.73Q950.85 878.58%2c 1088 901.43Q1174.89 828.32%2c 1248 915.2Q1331.5 902.7%2c 1344 986.2Q1367.43 913.63%2c 1440 937.07Q1482.22 883.29%2c 1536 925.51Q1645.59 875.1%2c 1696 984.69Q1785.73 914.42%2c 1856 1004.15Q1893.45 881.61%2c 2016 919.06z' fill='rgba(3%2c 79%2c 141%2c 1)'%3e%3c/path%3e%3cpath d='M1984 1080L0 1080 L0 987.42Q93.49 920.91%2c 160 1014.41Q226.21 984.62%2c 256 1050.83Q354.26 989.09%2c 416 1087.36Q485.13 996.48%2c 576 1065.61Q640.04 969.64%2c 736 1033.68Q852.5 990.18%2c 896 1106.68Q928.41 979.09%2c 1056 1011.5Q1150.59 946.09%2c 1216 1040.68Q1268.84 933.52%2c 1376 986.35Q1473.45 923.81%2c 1536 1021.26Q1640.92 966.18%2c 1696 1071.11Q1755.33 1034.44%2c 1792 1093.77Q1850.58 1056.35%2c 1888 1114.93Q1913.16 1044.09%2c 1984 1069.25z' fill='rgba(63%2c 128%2c 210%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1117'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #333;
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+
+
+}
+main {
+  margin-top: 6rem;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  height: 100vh;
+}
+.navbar{
+  
+  height: 2rem;
+  background-color: #032750;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+
 }
 
-h1 {
-    text-align: center;
-    margin-top: 20px;
-    color: #4CAF50;
+.navbar a{
+  color: #f2f2f2;
+  font-size: 1rem;
+  text-decoration: none;
+  font-family: cursive;
+  font-variant: small-caps;
+  text-align: center;
+  border-radius: 0.3rem;
+  padding: 0.8rem;
+  transition: 0.8s;
+  text-shadow: 2px 3px 3px rgba(0, 0, 0, 0.445);
+  
+}
+.navbar a:hover{
+  background-color: #0756a5;
+  
+ 
 }
 
-form {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.img{
+  
+ width: 250px;
+ height: max-content;
+
+
 }
 
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+
+.img>img{
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(4px 4px 3px rgba(0, 0, 0, 0.685));
+  
+}
+h1, h2 {
+  color: #f3f3f3;
+  text-align: center;
+  font-style: normal;
+  font-weight: bolder;
+  font-family: cursive;
+  font-size: 3rem;
+  filter: drop-shadow(4px 5px 3px rgba(0, 0, 0, 0.568));
+  
+}
+p{
+  color: white;
+}
+
+form, .list-section {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 2rem;
+  border-radius: 12px;
+  
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.file-upload {
+position: relative;
+display: inline-block;
+width: auto; /* Ajusta a largura ao conteúdo */
+margin-bottom: 15px;
+}
+
+.file-upload-btn {
+background-color: rgba(0, 0, 0, 0.3); /* Fundo translúcido preto */
+color: white;
+padding: 10px 15px;
+border: 2px solid rgba(255, 255, 255, 0.5);
+border-radius: 8px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s ease;
+width: auto;
+text-align: center;
+box-sizing: border-box;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.file-upload-btn::before {
+content: '+';
+font-size: 20px;
+margin-right: 5px;
+}
+
+.file-upload-btn:hover { /* A regra :hover vem depois da regra base */
+background-color: rgba(0, 0, 0, 0.89);
+border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Outras regras CSS aqui */
+
+.file-upload-input {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+opacity: 0;
+cursor: pointer;
+}
+
+.file-upload-text {
+display: none; /* Oculta o texto padrão "Nenhum arquivo selecionado" */
+}
+
+input[type="text"],
+textarea {
+width: 100%;
+padding: 12px;
+margin-top: 10px;
+margin-bottom: 15px;
+border-radius: 8px;
+border: 1px solid #ddd;
+font-size: 16px;
+background-color: #f9f9f9;
+color: #333;
+box-sizing: border-box;
+transition: border-color 0.3s ease, box-shadow 0.3s ease;
+filter: drop-shadow(4px 5px 3px rgba(0, 0, 0, 0.397));
+}
+
+input[type="text"]:focus,
+textarea:focus {
+border-color: #007bff;
+outline: none;
+box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#description {
+height: 150px; /* Estilo específico para a textarea */
+}
+input[type="file"],
+input[type="text"],
+textarea,
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #2d2d2e8a;
+  font-size: 14px;
+  color: #08488b;
+  box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.288);
+  
+
+
+}
+
+input#file-uploud-button{
+  background-color: black;
 }
 
 button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+  width: 10rem;
+  padding: 1rem;
+  background-color: #0d2e52;
+  color: white;
+  
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.288);
+  border: 1px solid rgba(29, 36, 71, 0.185);
 }
 
 button:hover {
-    background-color: #45a049;
+  background-color: #0a57aa;
 }
 
-h2 {
-    text-align: center;
-    margin-top: 30px;
-    color: #333;
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    max-width: 600px;
-    margin: 20px auto;
+.card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-li {
-    background: #fff;
-    margin: 10px 0;
-    padding: 15px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
-a {
-    text-decoration: none;
-    color: #4CAF50;
-    font-weight: bold;
+.card p {
+  margin: 5px 0;
 }
 
-a:hover {
-    text-decoration: underline;
+footer {
+  background-color: #032750;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }

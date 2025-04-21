@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visualizar Imagens</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    async function listImages() {
+      try {
+        const response = await fetch('http://localhost:3000/api/images');
+        const data = await response.json();
+
+        const imagesList = document.getElementById("imagesList");
+        imagesList.innerHTML = "";
+
+        data.forEach(image => {
+          const li = document.createElement("li");
+
+          li.innerHTML = `
+            <img src="${image.url}" alt="${image.title}" />
+            <p><strong>${image.title}</strong></p>
+            <p>Usuário: ${image.user}</p>
+            <button onclick="viewImage('${image.url}', '${image.id}')">Ver Foto</button>
+
+            <div class="comment-section" id="comment-section-${image.id}">
+              <input type="text" id="comment-input-${image.id}" placeholder="Escreva um comentário" />
+              <button onclick="addComment('${image.id}', '${image.user}')">Adicionar Comentário</button>
+              <ul class="comment-list" id="comments-list-${image.id}"></ul>
+            </div>
+          `;
+          imagesList.appendChild(li);
+
+          listComments(image.id);
+        });
+      } catch (error) {
+        console.error('Erro ao listar imagens:', error);
+      }
+    }
+
+    function viewImage(imageUrl) {
+      window.open(imageUrl, '_blank');
+    }
+
+    async function addComment(imageId, user) {
+      const commentInput = document.getElementById(`comment-input-${imageId}`);
+      const commentText = commentInput.value;
+
+      if (!commentText) {
+        alert('Por favor, escreva um comentário!');
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:3000/api/comments`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            imageId: imageId,
+            content: commentText,
+            user: user
+          })
+        });
+
+        const data = await response.json();
+        console.log('Comentário adicionado:', data);
+
+        commentInput.value = '';
+        listComments(imageId);
+      } catch (error) {
+        console.error('Erro ao adicionar comentário:', error);
+      }
+    }
+
+    async function listComments(imageId) {
+      try {
+        const response = await fetch(`http://localhost:3000/api/comments/${imageId}`);
+        const data = await response.json();
+
+        const commentsList = document.getElementById(`comments-list-${imageId}`);
+        commentsList.innerHTML = "";
+
+        data.forEach(comment => {
+          const li = document.createElement("li");
+          li.textContent = `${comment.user}: ${comment.content}`;
+          commentsList.appendChild(li);
+        });
+      } catch (error) {
+        console.error('Erro ao listar comentários:', error);
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navbox">
+        <a href="./index.html">inicio</a>
+        <a href="./adicionarFoto.html">uploud</a>
+        <a href="./adicionarComentario.html">comentario +</a>
+       
+    </div> 
+      <div class="img"><img src="Gemini_Generated_Image_etnh5vetnh5vetnh-removebg-preview.png" alt=""></div>
+    </nav>
+  </header>
+<main>
+    <h1>Comentarios</h1>
+
+    <p>Adicione Comentarios sobre as imagens Já enviadas</p>
+    <button onclick="listImages()">Listar Imagens</button>
+    <ul id="imagesList"></ul>
+  </main>
+  <footer>
+    <p>&copy; 2025 Sua Galeria de Imagens - Dev Cloud</p>
+</footer>
+</body>
+</html>

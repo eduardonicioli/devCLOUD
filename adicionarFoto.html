@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teste da API</title>
+ <link rel="stylesheet" href="style.css">
+  <script>
+    async function uploadImage() {
+      const fileInput = document.getElementById("imageInput");
+      const file = fileInput.files[0];
+      const formData = new FormData();
+
+      formData.append("file", file);
+      formData.append("title", document.getElementById("title").value);
+      formData.append("description", document.getElementById("description").value);
+      formData.append("user", document.getElementById("user").value);
+
+      try {
+        const response = await fetch('http://localhost:3000/api/images/upload', {
+          method: 'POST',
+          body: formData,
+        });
+
+        const data = await response.json();
+        alert('Imagem enviada com sucesso: ' + data.id);
+      } catch (error) {
+        console.error('Erro ao enviar imagem:', error);
+        alert('Erro ao enviar imagem');
+      }
+    }
+
+    async function listImages() {
+      try {
+        const response = await fetch('http://localhost:3000/api/images');
+        const data = await response.json();
+
+        const imagesList = document.getElementById("imagesList");
+        imagesList.innerHTML = "";
+
+        data.forEach(image => {
+          const div = document.createElement("div");
+          div.className = "card";
+
+          div.innerHTML = `
+            <img src="${image.url}" alt="${image.title}" />
+            <p><strong>${image.title}</strong></p>
+            <p>${image.user}</p>
+          `;
+
+          imagesList.appendChild(div);
+        });
+      } catch (error) {
+        console.error('Erro ao listar imagens:', error);
+        alert('Erro ao listar imagens');
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="navbox">
+          <a href="./index.html">inicio</a>
+          <a href="./adicionarFoto.html">uploud</a>
+          <a href="./adicionarComentario.html">comentario +</a>
+         
+      </div> 
+      <div class="img"><img src="Gemini_Generated_Image_etnh5vetnh5vetnh-removebg-preview.png" alt=""></div>
+    </nav>
+  </header>
+  <form id="imageForm" onsubmit="event.preventDefault(); uploadImage();">
+    <h2>Envie sua Imagem</h2>
+    
+    <div class="file-upload">
+      <button class="file-upload-btn" type="button">Selecionar Arquivo</button>
+      <div class="file-upload-wrapper">
+          <input class="file-upload-input" type="file" name="arquivo" accept="image/*">
+          <span class="file-upload-text">Nenhum arquivo selecionado</span>
+      </div>
+  </div>
+    <p>*Envia sua imagem e descreva ela nos campos abaixo*</p>
+   
+    <input type="text" id="title" placeholder="Título" required />
+    <textarea id="description" placeholder="Descrição (opcional)"></textarea>
+    <input type="text" id="user" placeholder="Email" required />
+    <button type="submit">Enviar Imagem</button>
+  </form>
+
+  <div class="list-section">
+    <h2>Imagens Enviadas</h2>
+    <button onclick="listImages()">Listar Imagens</button>
+    <div id="imagesList" class="gallery"></div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Sua Galeria de Imagens - Dev Cloud</p>
+</footer>
+</body>
+</html>
